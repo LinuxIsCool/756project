@@ -1,0 +1,85 @@
+* Project Proposal
+** Subject
+   Our subject is on virtualized trading agents that can be easily deployed to
+   cloud environments. Agents refer to deep reinforcement learning based
+   cryptocurrency trading bots as outlined in [[https://wwarxiv.org/pdf/1706.10059.pdf][this paper]], and implimented in
+   [[https://github.com/zhengyaojiang/pgportfolio][this repo]]. By deploying trading agents to virtualized cloud environments we
+   are able to easily scale up the number of active bots. By having many bots
+   deployed we are able to do interesting things like parallel grid search over
+   hyperparameters, inter-agent communication, and genetic programming based bot
+   evolution.
+** Team
+   Shawn Anderson
+   Sethu
+   Namita Puri
+** Work Plan
+   We have scheduled weekly meetings every Tuesday 2-5 pm. 
+   Meetings will serve the following purposes:
+       + Share progress of past week, get all team mates on same page
+       + Brainstorm next steps and project ideas
+       + Collaborative work session for project tasks
+   In addition to meetings we will all work as individuals throughout the week
+   to stay up to date, and accomplish assigned tasks for the project.
+** Project Proposal
+   + Introduction 
+        In [[https://www.arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement for the Financial Portfolio Management
+      Problem]], the authors build a trading bot that re-optimizes a crypto
+      currency portfolio at every time step. Our goal is to encapsulate the
+      software that the authors release along with the paper, thus being able to
+      spin up instances of the code(agents) in a cloud environment. Once the
+      initial phase of cloud deployment is accomplished, there are various
+      interesting scientific routes that could be taken from there.
+
+   + Additional Task 1: Centralized Database 
+        Run a database, with an open web api, which remote agents can post their
+      parameter selections and performance metrics. Aggregate performance metrics
+      can be computed. Resource
+   + Additional Task 2: Hyper-parameter evolution
+        When agents are spun up, there will be some intelligence to their hyper-parameter
+      initialization. No two agents will have the same hyper-parameters. New agents
+      will inherit hyper-parameter settings from the best surviving agents (genetic
+      programming). Additionally, there will be randomness incorporated into parameter
+      initialization, a tradeoff between exploitation and exploration
+   + Additional Task 3: Additional features 
+        In the paper, the agents are able to
+      perform well with only historic price movement as input. Specifically, only
+      three features: High, Low, Closing, for each time period (30 seconds). An
+      additional feature, for example, could be volume traded. We could also
+      integrate external information like social media data.
+   + Additional Task 4: Inter-agent communication
+          Imagine two agents forming an aliance, such that one agents intended actions
+        are concatenated to the input of another agent. Or allowing inter-agent trading to circumvent
+        market transaction fees.
+
+   + What technologies are you using? What do you need?
+     1. SFU-Cloud (Template, agents instances, central db)
+     2. Tensorflow
+     3. Poloniex API
+     4. Django REST Framework
+     5. Cassandra DB
+
+   + Choice 1 
+      Should agents stream data directly from source(poloniex) or from a
+     central database?
+
+   + Task Division
+
+   + Timeline
+
+     + Optimal
+
+     + Likely
+
+     + Backup
+
+
+* January 30
+** Organization
+   Communicate on Whatsapp
+   Call any time
+   
+** TODO Project Proposal
+** TODO API
+** TODO GitHub
+** TODO Ask Ryan about SparkOS
+** TODO Paper
