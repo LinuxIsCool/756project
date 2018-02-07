@@ -71,15 +71,3 @@
      + Likely
 
      + Backup
-
-
-* January 30
-** Organization
-   Communicate on Whatsapp
-   Call any time
-   
-** TODO Project Proposal
-** TODO API
-** TODO GitHub
-** TODO Ask Ryan about SparkOS
-** TODO Paper
