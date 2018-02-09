@@ -2,11 +2,11 @@
 ** Subject
    Our subject is on virtualized trading agents that can be easily deployed to
    cloud environments. Agents refer to deep reinforcement learning based
-   cryptocurrency trading bots as outlined in [[https://wwarxiv.org/pdf/1706.10059.pdf][this paper]], and implimented in
+   cryptocurrency trading bots as outlined in [[https://wwarxiv.org/pdf/1706.10059.pdf][this paper]], and implemented in
    [[https://github.com/zhengyaojiang/pgportfolio][this repo]]. By deploying trading agents to virtualized cloud environments we
    are able to easily scale up the number of active bots. By having many bots
    deployed we are able to do interesting things like parallel grid search over
-   hyperparameters, inter-agent communication, and genetic programming based bot
+   hyper-parameters, inter-agent communication, and genetic programming based bot
    evolution.
 ** Team
    Shawn Anderson
@@ -21,56 +21,81 @@
    In addition to meetings we will all work as individuals throughout the week
    to stay up to date, and accomplish assigned tasks for the project.
 ** Project Proposal
-   + Introduction 
-        In [[https://www.arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement for the Financial Portfolio Management
-      Problem]], the authors build a trading bot that re-optimizes a crypto
-      currency portfolio at every time step. Our goal is to encapsulate the
-      software that the authors release along with the paper, thus being able to
-      spin up instances of the code(agents) in a cloud environment. Once the
-      initial phase of cloud deployment is accomplished, there are various
-      interesting scientific routes that could be taken from there.
+*** Introduction:
+        In [[https://www.arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement for the Financial Portfolio Management Problem]],
+      the authors build a trading bot that re-optimizes a cryptocurrency
+      portfolio at every time step. Our goal is to encapsulate the software that
+      the authors release along with the paper, thus being able to spin up
+      instances of the code(agents) in a cloud environment. Once the initial
+      phase of cloud deployment is accomplished, there are various interesting
+      scientific routes that could be taken from there.
 
-   + Additional Task 1: Centralized Database 
-        Run a database, with an open web api, which remote agents can post their
-      parameter selections and performance metrics. Aggregate performance metrics
-      can be computed. Resource
-   + Additional Task 2: Hyper-parameter evolution
-        When agents are spun up, there will be some intelligence to their hyper-parameter
-      initialization. No two agents will have the same hyper-parameters. New agents
-      will inherit hyper-parameter settings from the best surviving agents (genetic
-      programming). Additionally, there will be randomness incorporated into parameter
-      initialization, a tradeoff between exploitation and exploration
-   + Additional Task 3: Additional features 
+*** Task 0: Deploy Remote Agent
+    Create a cloud environment template which will be ready to run the
+PGPortfolio software. Be able to instantiate an agent environment with an API
+call. Have Agent request initialization parameters from server. Have agent
+download its appropriate training and testing data. Perform and hardware queries
+required (Attempt GPU?). Begin training and testing.
+*** Task 1: Centralized Database 
+    Maintain a database which exposes a web API as a RESTful interface. This
+database will keep track of all agents that have been deployed, their
+parameters, and performance metrics. A newly deployed agent will make a request
+to the API for it's initialization parameters. From maintaining this data, we
+are able to retrieve interesting statistics like which agents performed the best
+over which periods, how many agents have been active at what times, which agent
+made the most Bitcoin, ect.
+*** Task 2: Plotting Performance 
+    Once we have remote agents posting performance metrics to the data base, we would like to have some sort of visualization of these metrics.
+ Visualization will serve as a sanity check to ensure that things are working properly, as well as it will serve as a powerful analysis and debugging tool as
+we move on to more advanced tasks.
+*** Task 3: Hyper-parameter optimization
+        When agents spawn, they will request initialization parameters from the
+server. Having a centralized initialization state dispatcher allows us to search
+the hyper-parameter space intelligently. A naive example would be to perform an
+exhaustive grid search over the hyper-parameters. But we can do better.
+*** Task 4: Hyper-parameter evolution
+    [[https://github.com/DEAP/deap][Distributed Evolutionary Algorithms in Python (DEAP)]] is a framework for
+    state-space optimization using evolutionary approaches like populations,
+    generations, fitness, mutation and prefix-trees. This could be used as the
+    back-end for our parameter-initialization dispatcher.
+*** Task 5: Additional learning features 
         In the paper, the agents are able to
       perform well with only historic price movement as input. Specifically, only
-      three features: High, Low, Closing, for each time period (30 seconds). An
-      additional feature, for example, could be volume traded. We could also
-      integrate external information like social media data.
-   + Additional Task 4: Inter-agent communication
-          Imagine two agents forming an aliance, such that one agents intended actions
-        are concatenated to the input of another agent. Or allowing inter-agent trading to circumvent
-        market transaction fees.
+      three features: High, Low, Closing, for each time period (30 seconds). Additional features could be tested, for example, trade volume. 
+*** Task 6: Transfer Learning
+    Transfer learning is a method in deep learning in which internal representations learned in one setting are transferred to another setting. If
+we could have each agent post it's learned parameters to a URL encoded as a prefix-tree, or genetic representation  that describes that agent. Then perhaps
+we could have agents literally inherit the genes of their ancestors.
+*** Task 7: Inter-agent communication
+          Imagine two agents sharing information, for example, one agent could
+        tell it's prediction's to another agent by concatenating it's output to
+        another agent's input. Or consider inter-agent trading, which could circumvent market transaction fees.
 
-   + What technologies are you using? What do you need?
-     1. SFU-Cloud (Template, agents instances, central db)
-     2. Tensorflow
-     3. Poloniex API
-     4. Django REST Framework
-     5. Cassandra DB
+*** What technologies are you using? What do you need?
+     1. SFU-Cloud (VM Template, DB host)
+     5. Python: Tensorflow, Django REST Framework, DEAP, SCOOP
+     4. Database
+     6. Poloniex API for Data
+     7. Optional: GPU
 
-   + Choice 1 
-      Should agents stream data directly from source(poloniex) or from a
-     central database?
+*** Questions / Concerns 
+      1. Should agents stream data directly from source(poloniex) or from a central database?
+         + We don't want to hammer the poloniex API, but it would be way easier if agents get their own data
+      2. Why must this approach be distributed? Why is it not the same to simply run agents as separate processes on a single machine?
+         + Perhaps we should spin up agents as separate processes within a cloud environment?
+      3. 
 
-   + Task Division
+     
 
-   + Timeline
+*** Task Division
 
-     + Optimal
+*** Timeline
 
-     + Likely
+**** Optimal
 
-     + Backup
+**** Likely
+
+**** Backup
      
 ** References
  1. [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
