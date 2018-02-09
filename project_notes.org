@@ -71,3 +71,8 @@
      + Likely
 
      + Backup
+     
+** References
+ 1. [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
+ 2. [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
+ 3. [[https://github.com/soravux/scoop/][SCOOP: Scalable COncurrent Operations in Python]]
