@@ -1,4 +1,6 @@
-* Project Proposal
+* Distributed Multi Agent Learning for Portfolio Management
+CMPT 756: Systems for Big Data Project Proposal
+
 ** Subject
    Our subject is on virtualized trading agents that can be easily deployed to
    cloud environments. Agents refer to deep reinforcement learning based
@@ -9,9 +11,9 @@
    hyper-parameters, inter-agent communication, and genetic programming based bot
    evolution.
 ** Team
-   Shawn Anderson
-   Sethu
-   Namita Puri
+Shawn Anderson
+Sethuraman Annamalai
+Namita Shah
 ** Work Plan
    We have scheduled weekly meetings every Tuesday 2-5 pm. 
    Meetings will serve the following purposes:
@@ -74,7 +76,7 @@ we could have agents literally inherit the genes of their ancestors.
 *** What technologies are you using? What do you need?
      1. SFU-Cloud (VM Template, DB host)
      5. Python: Tensorflow, Django REST Framework, DEAP, SCOOP
-     4. Database
+     4. Database Backend
      6. Poloniex API for Data
      7. Optional: GPU
 
@@ -82,20 +84,21 @@ we could have agents literally inherit the genes of their ancestors.
       1. Should agents stream data directly from source(poloniex) or from a central database?
          + We don't want to hammer the poloniex API, but it would be way easier if agents get their own data
       2. Why must this approach be distributed? Why is it not the same to simply run agents as separate processes on a single machine?
-         + Perhaps we should spin up agents as separate processes within a cloud environment?
-      3. 
-
-     
+         + Perhaps we should spin up multiple agents as separate processes within cloud environments?     
 
 *** Task Division
+We will all work together to accomplish task 0. This will assure that all group members become familiar with the software and deployment technique. Other than that, we will mostly work together on tasks, but to introduce some paralellism, we will say Shawn is responsible for tasks 1,2; Sethu is responsible for 3,4; Namita is responsible for 5,6. Task 7 will remain as a bonus.
 
 *** Timeline
 
 **** Optimal
+Task 0 is finished before March 2nd. Each member has acheived results on one of their two tasks by March 9th. Most members have acheived results on their second task by March 23rd. Remaining time is used to run experiments, investigate task 7 or additional tasks that arrise, and write the report.
 
 **** Likely
+Task 0 is finished before March 2nd. Each member has acheived results on one of their two tasks by March 16th. Each member has acheived results on their second task by April 1st. Remaining time is used to run experiments, investigate task 7, and write the report.
 
 **** Backup
+Task 0 is finished before March 9th. Some members have acheived results on one of their two tasks by March 16th. Members collaborate to assure the 5/8 tasks are acheived by April 1st. Remaining time is used to run experiments, investigate remaining tasks, and write the report.
      
 ** References
  1. [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
