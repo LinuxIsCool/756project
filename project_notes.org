@@ -106,3 +106,4 @@ Task 0 is finished before March 9th. Some members have acheived results on one o
  2. [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
  3. [[https://github.com/soravux/scoop/][SCOOP: Scalable COncurrent Operations in Python]]
  4. [[http://www.django-rest-framework.org/][Django Rest Framework]]
+ 5. [[https://en.wikipedia.org/wiki/Kubernetes][Kubernetes Cluster Management Software]]
