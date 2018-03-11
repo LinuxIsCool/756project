@@ -103,6 +103,12 @@ Task 0 is finished before March 9th. Some members have acheived results on one o
 ** References
  1. [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
  2. [[https://github.com/uber-common/deep-neuroevolution][Deep Neuro-Evolution]]
+ 
+ [[https://www.oreilly.com/ideas/neuroevolution-a-different-kind-of-deep-learning][Neuroevolutin: A different kind of Deep Learning]]
+ "That is, neuroevolution is just as eligible to benefit from massive hardware investment as conventional deep learning, if not more. The advantage for neuroevolution, as with all evolutionary algorithms, is that a population of ANNs is intrinsically and easily processed in parallel—if you have 100 ANNs in the population and 100 processors, you can evaluate all of those networks at the same time, in the time it takes to evaluate a single network. That kind of speed-up can radically expand the potential applications of the method.
+
+One consequence is that labs with access to large-scale computing clusters can see that they might be sitting on a neuroevolution goldmine, prompting a new generation of researchers and next-generation neuroevolution experiments to grow out of labs largely otherwise invested in conventional deep learning."
+
  2. [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
  3. [[https://github.com/soravux/scoop/][SCOOP: Scalable COncurrent Operations in Python]]
  4. [[http://www.django-rest-framework.org/][Django Rest Framework]]
