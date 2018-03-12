@@ -118,6 +118,8 @@ One consequence is that labs with access to large-scale computing clusters can s
 
 " Highly parallelizable. ES only requires workers to communicate a few scalars between each other, while in RL it is necessary to synchronize entire parameter vectors (which can be millions of numbers). Intuitively, this is because we control the random seeds on each worker, so each worker can locally reconstruct the perturbations of the other workers. Thus, all that we need to communicate between workers is the reward of each perturbation. As a result, we observed linear speedups in our experiments as we added on the order of thousands of CPU cores to the optimization."
 
+"Since ES requires negligible communication between workers, we were able to solve one of the hardest MuJoCo tasks (a 3D humanoid) using 1,440 CPUs across 80 machines in only 10 minutes. As a comparison, in a typical setting 32 A3C workers on one machine would solve this task in about 10 hours. It is also possible that the performance of RL could also improve with more algorithmic and engineering effort, but we found that naively scaling A3C in a standard cloud CPU setting is challenging due to high communication bandwidth requirements."
+
  5. [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
  6. [[https://github.com/soravux/scoop/][SCOOP: Scalable COncurrent Operations in Python]]
  7. [[https://en.wikipedia.org/wiki/Kubernetes][Kubernetes Cluster Management Software]]
