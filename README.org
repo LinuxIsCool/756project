@@ -1,4 +1,4 @@
-# 756project
+* 756project
 A comparison of Scalability between Reinforcement Learning and Evolution Strategies on Benchmark Problems
 
 ** References
