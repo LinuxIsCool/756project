@@ -30,6 +30,8 @@ One consequence is that labs with access to large-scale computing clusters can s
 
 "By using 100 sep-arate  actor-learner  processes  and  30  parameter  server  in-stances, a total of 130 machines, Gorila was able to significantly outperform DQN over 49 Atari games.  On many games Gorila reached the score achieved by DQN over 20 times faster than DQN."
 
+https://github.com/rll/rllab
+
 [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
 
 [[https://www.cs.cmu.edu/~muli/file/parameter_server_osdi14.pdf][Scaling Distributed Machine Learning with the Parameter Server]]
