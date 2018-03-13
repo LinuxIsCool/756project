@@ -102,7 +102,9 @@ Task 0 is finished before March 9th. Some members have acheived results on one o
      
 ** References
  [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
+ 
  https://github.com/uber-common/deep-neuroevolution
+ 
  https://www.oreilly.com/ideas/neuroevolution-a-different-kind-of-deep-learning :
  
  "That is, neuroevolution is just as eligible to benefit from massive hardware investment as conventional deep learning, if not more. The advantage for neuroevolution, as with all evolutionary algorithms, is that a population of ANNs is intrinsically and easily processed in parallel—if you have 100 ANNs in the population and 100 processors, you can evaluate all of those networks at the same time, in the time it takes to evaluate a single network. That kind of speed-up can radically expand the potential applications of the method."
