@@ -36,5 +36,5 @@ One consequence is that labs with access to large-scale computing clusters can s
 
 [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
 
-### Project Proposal:
+*** Project Proposal:
 https://github.com/LinuxIsCool/756project/blob/master/project_notes.org
