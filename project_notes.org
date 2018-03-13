@@ -120,6 +120,10 @@ One consequence is that labs with access to large-scale computing clusters can s
 
 "Since ES requires negligible communication between workers, we were able to solve one of the hardest MuJoCo tasks (a 3D humanoid) using 1,440 CPUs across 80 machines in only 10 minutes. As a comparison, in a typical setting 32 A3C workers on one machine would solve this task in about 10 hours. It is also possible that the performance of RL could also improve with more algorithmic and engineering effort, but we found that naively scaling A3C in a standard cloud CPU setting is challenging due to high communication bandwidth requirements."
 
+"On Atari, ES trained on 720 cores in 1 hour achieves comparable performance to A3C trained on 32 cores in 1 day. "
+
+"Compared to this work and much of the work it has inspired, our focus is specifically on scaling these algorithms to large-scale, distributed settings, finding components that make the algorithms work better with deep neural networks (e.g. virtual batch norm), and evaluating them on modern RL benchmarks."
+
  5. [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
  6. [[https://github.com/soravux/scoop/][SCOOP: Scalable COncurrent Operations in Python]]
  7. [[https://en.wikipedia.org/wiki/Kubernetes][Kubernetes Cluster Management Software]]
