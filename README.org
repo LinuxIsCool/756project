@@ -1,6 +1,10 @@
 * 756project
 A comparison of Scalability between Reinforcement Learning and Evolution Strategies on Benchmark Problems
 
+** Project Outline (Final Report Template)
+
+https://www.overleaf.com/14627727rnpjsbffztgt#/55937226/
+
 ** References
 
 https://blog.openai.com/evolution-strategies/ :
