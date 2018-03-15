@@ -5,6 +5,11 @@ A comparison of Scalability between Reinforcement Learning and Evolution Strateg
 
 https://www.overleaf.com/14627727rnpjsbffztgt#/55937226/
 
+** Subject
+Evolution Strategies have recently been proposed as a highly paralellizable alternative to Reinforcement Learning for control tasks[1]. However, recent innovations in Reinforcement Learning have also produced highly parallelizable algorithms, particularily Asynchronous Actor-Critique Agents(A3C)[2]. We will to compared the performace of these two algorithms on benchmark problems from the field of RL. We will also compare the scalability of these two algorithms by performance/number of cores, and network load/number of cores. It appears that these algorithms are not easily GPU parallizable, as each worker must communicate at least a scalar with every other worker on each iteration (Not sure about this yet, more reading required).
+
+
+
 ** References
 
 https://blog.openai.com/evolution-strategies/ :
@@ -21,6 +26,11 @@ https://blog.openai.com/evolution-strategies/ :
 
 "Compared to this work and much of the work it has inspired, our focus is specifically on scaling these algorithms to large-scale, distributed settings, finding components that make the algorithms work better with deep neural networks (e.g. virtual batch norm), and evaluating them on modern RL benchmarks."
 
+[[https://arxiv.org/pdf/1602.01783.pdf][Asynchronous Methods for Deep Reinforcement Learning]] :
+
+"By using 100 sep-arate  actor-learner  processes  and  30  parameter  server  in-stances, a total of 130 machines, Gorila was able to significantly outperform DQN over 49 Atari games.  On many games Gorila reached the score achieved by DQN over 20 times faster than DQN."
+
+https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-8-asynchronous-actor-critic-agents-a3c-c88f72a5e9f2
 
  https://eng.uber.com/deep-neuroevolution/
 
@@ -30,11 +40,7 @@ https://blog.openai.com/evolution-strategies/ :
 
 One consequence is that labs with access to large-scale computing clusters can see that they might be sitting on a neuroevolution goldmine, prompting a new generation of researchers and next-generation neuroevolution experiments to grow out of labs largely otherwise invested in conventional deep learning."
 
-[[https://arxiv.org/pdf/1602.01783.pdf][Asynchronous Methods for Deep Reinforcement Learning]] :
 
-"By using 100 sep-arate  actor-learner  processes  and  30  parameter  server  in-stances, a total of 130 machines, Gorila was able to significantly outperform DQN over 49 Atari games.  On many games Gorila reached the score achieved by DQN over 20 times faster than DQN."
-
-https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-8-asynchronous-actor-critic-agents-a3c-c88f72a5e9f2
 
 https://github.com/rll/rllab
 
