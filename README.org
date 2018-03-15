@@ -41,6 +41,18 @@ Evolution Strategies have recently been proposed as a highly paralellizable alte
 
 *** Evolutionary Strategy
 
+https://arxiv.org/pdf/1703.03864.pdf
+
+"Evolution Strategies, as presented above, works with full-length episodes. In some rare cases this
+can lead to low CPU utilization, as some episodes run for many more steps than others.  For this
+reason, we cap episode length at a constant 
+m 
+steps for all workers, which we dynamically adjust as
+training progresses. For example, by setting 
+m 
+to be equal to twice the mean number of steps taken
+per episode, we can guarantee that CPU utilization stays above 50% in the worst case."
+
 https://blog.openai.com/evolution-strategies/ :
 
 "In particular, ES is simpler to implement (there is no need for backpropagation), it is easier to scale in a distributed setting, it does not suffer in settings with sparse rewards, and has fewer hyperparameters. This outcome is surprising because ES resembles simple hill-climbing in a high-dimensional space based only on finite differences along a few random directions at each step."
