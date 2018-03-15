@@ -90,6 +90,8 @@ One consequence is that labs with access to large-scale computing clusters can s
 
 *** Benchmarking
 
+[[https://arxiv.org/pdf/1606.01540.pdf][OpenAI Gym]]
+
 https://github.com/rll/rllab
 
 *** Parallelism, Distribution, and Cloud Computing
