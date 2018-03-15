@@ -64,6 +64,8 @@ https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow
 
 https://github.com/muupan/async-rl
 
+https://github.com/islandman93/reinforcepy
+
 *** NeuroEvolution
 
  https://eng.uber.com/deep-neuroevolution/
