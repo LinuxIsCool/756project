@@ -6,11 +6,40 @@ A comparison of Scalability between Reinforcement Learning and Evolution Strateg
 https://www.overleaf.com/14627727rnpjsbffztgt#/55937226/
 
 ** Subject
-Evolution Strategies have recently been proposed as a highly paralellizable alternative to Reinforcement Learning for control tasks[1]. However, recent innovations in Reinforcement Learning have also produced highly parallelizable algorithms, particularily Asynchronous Actor-Critique Agents(A3C)[2]. We will to compared the performace of these two algorithms on benchmark problems from the field of RL. We will also compare the scalability of these two algorithms by performance/number of cores, and network load/number of cores. It appears that these algorithms are not easily GPU parallizable, as each worker must communicate at least a scalar with every other worker on each iteration (Not sure about this yet, more reading required).
+Evolution Strategies have recently been proposed as a highly paralellizable alternative to Reinforcement Learning for control tasks[[https://blog.openai.com/evolution-strategies/#content][1]]. However, recent innovations in Reinforcement Learning have also produced highly parallelizable algorithms, particularily Asynchronous Actor-Critique Agents(A3C)[[https://github.com/muupan/async-rl][2]]. We will compare the performace of these two algorithms on benchmark problems from the field of RL. We will also compare the scalability of these two algorithms by performance/number of cores, and network load/number of cores. It appears that these algorithms are not easily GPU parallizable, as each worker must communicate at least a scalar with every other worker on each iteration (Not sure about this yet, more reading required).
 
+** Tasks
+*** Benchmarking Evolutionary Strategy
+1. Run ES on Benchmark Problem
+    1. Gaussian Landscape
+    2. MuJoCo
+    3. Atari
+2. Run ES in Parallel on Benchmark Problem
+    1. Gaussian Landscape
+    2. MuJoCo
+    3. Atari
+3. Run ES in Parallel, distributed on a cluster
+    1. Gaussian Landscape
+    2. MuJoCo
+    3. Atari
 
+*** Benchmarking Asynchronous Actor-Critic Agents
+4. Run A3C on Benchmark Problem
+    1. Gaussian Landscape
+    2. MuJoCo
+    3. Atari
+5. Run A3C in Parallel on Benchmark Problem
+    1. Gaussian Landscape
+    2. MuJoCo
+    3. Atari
+6. Run A3C in Parallel, distributed on a cluster
+    1. Gaussian Landscape
+    2. MuJoCo
+    3. Atari
 
 ** References
+
+*** Evolutionary Strategy
 
 https://blog.openai.com/evolution-strategies/ :
 
@@ -26,11 +55,16 @@ https://blog.openai.com/evolution-strategies/ :
 
 "Compared to this work and much of the work it has inspired, our focus is specifically on scaling these algorithms to large-scale, distributed settings, finding components that make the algorithms work better with deep neural networks (e.g. virtual batch norm), and evaluating them on modern RL benchmarks."
 
+*** Asynchronous Actor-Critic Agents
 [[https://arxiv.org/pdf/1602.01783.pdf][Asynchronous Methods for Deep Reinforcement Learning]] :
 
 "By using 100 sep-arate  actor-learner  processes  and  30  parameter  server  in-stances, a total of 130 machines, Gorila was able to significantly outperform DQN over 49 Atari games.  On many games Gorila reached the score achieved by DQN over 20 times faster than DQN."
 
 https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-8-asynchronous-actor-critic-agents-a3c-c88f72a5e9f2
+
+https://github.com/muupan/async-rl
+
+*** NeuroEvolution
 
  https://eng.uber.com/deep-neuroevolution/
 
@@ -40,15 +74,23 @@ https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow
 
 One consequence is that labs with access to large-scale computing clusters can see that they might be sitting on a neuroevolution goldmine, prompting a new generation of researchers and next-generation neuroevolution experiments to grow out of labs largely otherwise invested in conventional deep learning."
 
-
+*** Benchmarking
 
 https://github.com/rll/rllab
 
+*** Parallelism, Distribution, and Cloud Computing
+
 [[https://github.com/DEAP/deap][DEAP: Distributed Evolutionary Algorithms in Python]]
+
+https://github.com/soravux/scoop
+
+https://github.com/jupyterhub/jupyterhub
 
 [[https://www.cs.cmu.edu/~muli/file/parameter_server_osdi14.pdf][Scaling Distributed Machine Learning with the Parameter Server]]
 
+*** Other
+
 [[https://arxiv.org/pdf/1706.10059.pdf][Deep Reinforcement Learning for Portfolio Optimization]]
 
-*** Project Proposal:
+*** Old Project Proposal:
 https://github.com/LinuxIsCool/756project/blob/master/project_notes.org
