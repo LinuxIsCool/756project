@@ -1,41 +1,36 @@
 * 756project
-A comparison of Scalability between Reinforcement Learning and Evolution Strategies on Benchmark Problems
+A comparison of Scalability between Reinforcement Learning and Evolution Strategies on Benchmark Problems for OpenAI Gym
 
 ** Project Outline (Final Report Template)
 
 https://www.overleaf.com/14627727rnpjsbffztgt#/55937226/
 
 ** Subject
-Evolution Strategies have recently been proposed as a highly paralellizable alternative to Reinforcement Learning for control tasks[[https://blog.openai.com/evolution-strategies/#content][1]]. However, recent innovations in Reinforcement Learning have also produced highly parallelizable algorithms, particularily Asynchronous Actor-Critique Agents(A3C)[[https://github.com/muupan/async-rl][2]]. We will compare the performace of these two algorithms on benchmark problems from the field of RL. We will also compare the scalability of these two algorithms by performance/number of cores, and network load/number of cores. It appears that these algorithms are not easily GPU parallizable, as each worker must communicate at least a scalar with every other worker on each iteration (Not sure about this yet, more reading required).
+*** Evolutionary Strategy and Reinforcement Learning
+Evolution Strategies have recently been proposed as a highly parallelizable alternative to Reinforcement Learning for control tasks[[https://blog.openai.com/evolution-strategies/][1]]. However, recent innovations in Reinforcement Learning have also produced highly parallelizable algorithms, particularily Asynchronous Actor-Critique Agents(A3C)[[https://github.com/muupan/async-rl][2]]. We will compare the performance scalability of these two algorithms in terms of number of cores used in parallel. 
+
+*** Benchmarking
+For Benchmarking, we will use [[https://gym.openai.com/][Gym]], a python toolkit by OpenAI. Gym is a suite of simulation environments for design and testing of RL algorithms. Gym was designed to standardize RL benchmarking across the field so that researchers can accurately compare results. [[https://gym.openai.com/envs/#classic_control][Environments]] range from simple control tasks like balancing a pole, to learning human locomotion. There are also algorithmic environments, where the agent is to learn to immitate some computer program, these are good for research as the difficulty can be precisely manipulated.
+
+*** Parallel Distribution
+Cloudera: Scoop / DEAP / Spark / GPU
+Jupyterhub
+
+*** Experiments
+1. Performance / number of cores
+2. Network load / number of cores.
 
 ** Tasks
 *** Benchmarking Evolutionary Strategy
 1. Run ES on Benchmark Problem
-    1. Gaussian Landscape
-    2. MuJoCo
-    3. Atari
 2. Run ES in Parallel on Benchmark Problem
-    1. Gaussian Landscape
-    2. MuJoCo
-    3. Atari
 3. Run ES in Parallel, distributed on a cluster
-    1. Gaussian Landscape
-    2. MuJoCo
-    3. Atari
 
 *** Benchmarking Asynchronous Actor-Critic Agents
 4. Run A3C on Benchmark Problem
-    1. Gaussian Landscape
-    2. MuJoCo
-    3. Atari
 5. Run A3C in Parallel on Benchmark Problem
-    1. Gaussian Landscape
-    2. MuJoCo
-    3. Atari
 6. Run A3C in Parallel, distributed on a cluster
-    1. Gaussian Landscape
-    2. MuJoCo
-    3. Atari
+
 
 ** References
 
