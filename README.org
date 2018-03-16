@@ -1,5 +1,5 @@
 * 756project
-A comparison of Scalability between Reinforcement Learning and Evolution Strategies on Benchmark Problems for OpenAI Gym
+A comparison of Scalability between Reinforcement Learning and Evolution Strategies on Benchmark Problems from OpenAI Gym
 
 ** Project Outline (Final Report Template)
 
