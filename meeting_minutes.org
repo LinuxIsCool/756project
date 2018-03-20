@@ -1,0 +1,11 @@
+* Tuesday, March 21st Worksession
+** Installing Gym
+Namita and Sethu are installing gym
+** I Will investigate ES, they will do RL
+ We will solve some benchmark problems with our respective algorithms by next Tuesday.
+** Notes on ES implementation
+ES is for training Neural Networks
+Virtual Batch normalization is important
+Communication strategies based on random numbers
+ES exhibits better exploration than TRPO
+Robust - fixed hyper parameters
