@@ -25,11 +25,13 @@ Jupyterhub
 1. Run ES on Benchmark Problem
 2. Run ES in Parallel on Benchmark Problem
 3. Run ES in Parallel, distributed on a cluster
+4. Run ES in Parallel, on GPU
 
 *** Benchmarking Asynchronous Actor-Critic Agents
 4. Run A3C on Benchmark Problem
 5. Run A3C in Parallel on Benchmark Problem
 6. Run A3C in Parallel, distributed on a cluster
+7. Run A3C in Parallel, on GPU
 
 
 ** References
