@@ -9,3 +9,12 @@ Virtual Batch normalization is important
 Communication strategies based on random numbers
 ES exhibits better exploration than TRPO
 Robust - fixed hyper parameters
+** Evolution Strategies
+At every iteration ("generation"), a population of parameter vectors ("genotypes")
+is perturbed ("mutated") and their objective function value ("fitness") is evaluated.
+The highest scoring parameter vectors are then recombined ("breeded") to form the 
+population for the next generation.
+
+Algorithms differ by how they represent the population and how they perform mutation
+and recombination.
+
