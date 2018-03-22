@@ -22,7 +22,7 @@ class BlackBox:
         w = []
         for l in weights:
             if isinstance(l, collections.Iterable):
-                w = w + flatten(l)
+                w = w + self.flatten(l)
             else:
                 w = w + [l]
         return w
@@ -61,34 +61,42 @@ class BlackBox:
 
     def produce_action(self, state):
         inp = np.array([np.array(state).T])
-        return np.argmax(model.predict)
+        return np.argmax(self.model.predict(inp))
 
 
-env = gym.make('MountainCar-v0')
-alpha = 0.1
-sigma = 3
-bb = BlackBox()
-w = bb.get_flat_weights()
-pop_size = 200
 
 def run_sim():
+    env = gym.make('MountainCar-v0')
+    alpha = 0.1
+    sigma = 3
+    bb = BlackBox()
+    w = bb.get_flat_weights()
+    pop_size = 200
+
     for i_episode in range(20):
         observation = env.reset()
-        for t in range(200):
-            env.render()
-            action = 2#env.action_space.sample()
-            if math.ceil(math.sqrt(t)) % 2:
-                action = 2
-                print("action = ", 2)
-            else:
-                action = 0
-                print("action = ", 0)
-            observation, reward, done, info = env.step(action)
-            #  print(observation)
-            if done:
-                print("Episode finished after {} timesteps".format(t+1))
-                exit()
-                break
+        # Create a population by randomly mutating your network parameters
+        noise = np.random.randn(pop_size, len(w))
+        population = w + sigma*noise
+        F = []
+        for agent in population:
+            bb.set_flat_weights(agent)
+            fitness = 0
+            for t in range(200):
+                #  env.render()
+                action = bb.produce_action(observation)
+                observation, reward, done, info = env.step(action)
+                # We will sum position and velocity to get reward
+                reward = sum(observation)
+                # Subtract 1 each time step to reward faster finishes
+                fitness += (reward - 1)
+            F.append(fitness)
+        print(
+            'Gen: ', i_episode,
+            '| Net_R: %.1f' % sum(F),
+            )
+        w = w + alpha*(1/(pop_size*sigma))*(noise.T*F).T.sum(axis=0)
+
 
 """
 We need a distribution over parameters p_psi(theta) parameterized by psi.
@@ -105,5 +113,8 @@ When p_psi is a factored gaussian, the resulting gradient estimator is also know
 
         
 if __name__ == '__main__':
+    #  bb = BlackBox()
+    #  obs = env.reset()
+    #  bb.produce_action(obs)
     run_sim()
 
