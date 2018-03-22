@@ -64,6 +64,8 @@ https://blog.openai.com/evolution-strategies/ :
 
 "Compared to this work and much of the work it has inspired, our focus is specifically on scaling these algorithms to large-scale, distributed settings, finding components that make the algorithms work better with deep neural networks (e.g. virtual batch norm), and evaluating them on modern RL benchmarks."
 
+https://github.com/MorvanZhou/Evolutionary-Algorithm
+
 *** Asynchronous Actor-Critic Agents
 [[https://arxiv.org/pdf/1602.01783.pdf][Asynchronous Methods for Deep Reinforcement Learning]] :
 
