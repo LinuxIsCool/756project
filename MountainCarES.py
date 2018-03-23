@@ -63,8 +63,6 @@ class BlackBox:
         inp = np.array([np.array(state).T])
         return np.argmax(self.model.predict(inp))
 
-
-
 def run_sim():
     env = gym.make('MountainCar-v0')
     alpha = 0.1
@@ -97,21 +95,6 @@ def run_sim():
             )
         w = w + alpha*(1/(pop_size*sigma))*(noise.T*F).T.sum(axis=0)
 
-
-"""
-We need a distribution over parameters p_psi(theta) parameterized by psi.
-
-Maximize the average objective value E_(theta sampled from p_psi)F(theta)
-over the population by searching for psi with stochastic gradient ascent.
-Using the score function estimator for Delta_psi E_(theta sampled from p_psi)F(theta)
-
-When p_psi is a factored gaussian, the resulting gradient estimator is also know as:
-    simultaneous perturbation stochastic approximation
-    parameter exploring gradients
-    zero-order gradient estimation
-"""
-
-        
 if __name__ == '__main__':
     #  bb = BlackBox()
     #  obs = env.reset()
