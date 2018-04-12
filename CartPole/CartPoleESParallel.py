@@ -7,6 +7,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 from math import sqrt
 from timeit import default_timer as timer
+import multiprocessing
 
 # Suppress Warnings
 ERROR = 40
@@ -36,16 +37,27 @@ class BlackBox:
         return w
 
     def unflatten(self, flat_weights):
+        #  import tensorflow as tf
+        print("here in unflatten")
         w = []
         i = 0
         for l, size in enumerate(self.shape):
-            layer = self.model.layers[l].get_weights()
+            print("here in unflatten loop")
+            layer = self.model.layers[l]
+            print("here in unflatten loop2")
+            layer = layer.get_weights()
+            #  layer = layer.weights
+            print("here in unflatten loop3")
+            #  import tensorflow as tf
+            #  layer = tf.keras.backend.batch_get_value(layer)
+            print("here in unflatten loop4")
             params = layer[0]
             bias = layer[1]
             new_layer = []
             new_params = []
             new_bias = []
             for param in params:
+                print("here in unflatten params")
                 new_params.append(flat_weights[i:i+size])
                 i += size
             for b in bias:
@@ -59,6 +71,7 @@ class BlackBox:
         return self.model.get_weights()
 
     def set_weights(self, weights):
+        print("here in set weights")
         self.model.set_weights(weights)
 
     def get_flat_weights(self):
@@ -102,18 +115,54 @@ class CartPoleES:
         self.verbose = verbose
         return
 
-    def train(self, num_tests=1):
+    def test_brain(self, brain, bb):
+        print("here test brain")
+        local_env = gym.make(self.env)
+        observation = local_env.reset()
+        print("here test brain2")
+        bb.set_flat_weights(brain)
+        print("here test brain3")
+        agent_fitness = 0
+        steps = 0
+        # An agent gets a single episode to determine its fitness.
+        # In CartPole, fitness is equal to number of steps the the
+        # pole remains balanced
+        for step in range(self.max_steps):
+            print(step)
+            steps += 1
+            action = bb.produce_action(np.array(list(observation)))
+            observation, reward, done, info = local_env.step(action)
+            agent_fitness += reward
+            # If the agents loses balance of the pole, the episode ends
+            if done:
+                break
+        return agent_fitness, steps
+
+    def eval_population(self, bb, population):
+        #  import tensorflow as tf
+        import keras
+        print("hello")
+        F = []
+        trials = 0
+        for brain in population:
+            agent_fitness, steps = self.test_brain(brain, bb)
+            print("Agent Fitness: ", agent_fitness)
+            F.append(agent_fitness)
+            trials += 1
+        return F, trials, steps
+
+    def train(self, num_tests=1, num_processes=2):
+        print("Using {} processes.".format(num_processes))
         history = []
         for test in range(num_tests):
-            local_env = gym.make(self.env)
             wall_time_start = timer()
             total_trials = 0
             total_steps = 0
             total_generations = 0
             generation_times = []
             converged = False
-            bb = BlackBox()
-            weights = bb.get_flat_weights()
+            bbs = [BlackBox() for t in range(num_processes)]
+            weights = bbs[0].get_flat_weights()
             convergence_test = collections.deque(maxlen=int(sqrt(self.convergence_trials)))
             fitness_history = []
             for generation in range(self.max_generations):
@@ -121,24 +170,20 @@ class CartPoleES:
                 generation_time_start = timer()
                 mutations = np.random.randn(self.pop_size, len(weights))
                 population = weights + self.sigma*mutations
-                F = []
-                for brain in population:
-                    total_trials += 1
-                    observation = local_env.reset()
-                    bb.set_flat_weights(brain)
-                    agent_fitness = 0
-                    # An agent gets a single episode to determine its fitness.
-                    # In CartPole, fitness is equal to number of steps the the
-                    # pole remains balanced
-                    for step in range(self.max_steps):
-                        total_steps += 1
-                        action = bb.produce_action(np.array(list(observation)))
-                        observation, reward, done, info = local_env.step(action)
-                        agent_fitness += reward
-                        # If the agents loses balance of the pole, the episode ends
-                        if done:
-                            break
-                    F.append(agent_fitness)
+                sub_population_size = len(population) // len(bbs)
+                jobs = []
+                for process in range(num_processes):
+                    bb = bbs[process]
+                    start_index = sub_population_size * process
+                    sub_population = population[start_index:start_index+sub_population_size]
+                    print("Spawning subprocess for sub_population: ", start_index, start_index+sub_population_size)
+                    p = multiprocessing.Process(target=self.eval_population, args=(bb, sub_population,))
+                    jobs.append(p)
+                    p.start()
+                print(jobs)
+                results = [j.join() for j in jobs]
+                F = [r[0] for r in results]
+                F = [item for sublist in F for item in sublist]
                 weights = weights + self.alpha*(1/(self.pop_size*self.sigma))*(mutations.T*F).T.sum(axis=0)
                 generation_time_end = timer()
                 current_fitness = self.test_weights(weights)
