@@ -1,13 +1,14 @@
 import gym
 import time
-from keras.models import Sequential
-from keras.layers import Dense, Activation
+#  from keras.models import Sequential
+#  from keras.layers import Dense, Activation
 import collections
 from matplotlib import pyplot as plt
 import numpy as np
 from math import sqrt
 from timeit import default_timer as timer
 import multiprocessing
+import thread
 
 # Suppress Warnings
 ERROR = 40
@@ -18,6 +19,8 @@ class BlackBox:
         self._init_model()
 
     def _init_model(self, shape=[2,2], actions=2):
+        from keras.models import Sequential
+        from keras.layers import Dense, Activation
         model = Sequential([
             Dense(2, input_dim=4, activation='relu'),
             Dense(actions, activation='softmax'),
@@ -138,9 +141,10 @@ class CartPoleES:
                 break
         return agent_fitness, steps
 
-    def eval_population(self, bb, population):
+    def eval_population(self, population):
         #  import tensorflow as tf
-        import keras
+        #  import keras
+        bb = BlackBox()
         print("hello")
         F = []
         trials = 0
@@ -173,11 +177,11 @@ class CartPoleES:
                 sub_population_size = len(population) // len(bbs)
                 jobs = []
                 for process in range(num_processes):
-                    bb = bbs[process]
+                    #  bb = bbs[process]
                     start_index = sub_population_size * process
                     sub_population = population[start_index:start_index+sub_population_size]
                     print("Spawning subprocess for sub_population: ", start_index, start_index+sub_population_size)
-                    p = multiprocessing.Process(target=self.eval_population, args=(bb, sub_population,))
+                    p = multiprocessing.Process(target=self.eval_population, args=(sub_population,))
                     jobs.append(p)
                     p.start()
                 print(jobs)
