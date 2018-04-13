@@ -1,0 +1,19 @@
+threads = 1
+CPU usage = 13.5
+watt = 44.5
+A = 0.384
+
+threads = 2
+CPU usage = 24.3
+watt = 56.1
+A = 0.481
+
+threads = 4
+CPU usage = 42.7
+watt = 78.0
+A = 0.678
+
+threads = 8
+CPU usage = 76.0
+watt = 85
+A = 0.82

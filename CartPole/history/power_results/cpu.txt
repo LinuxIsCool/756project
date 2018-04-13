@@ -1,0 +1,97 @@
+threads = 1
+optimizer = 2
+max = 1000
+training = 10
+CPU usage = 13
+watt = 62.5
+A = 0.55
+
+threads = 2
+optimizer = 2
+max = 1000
+training = 10
+CPU usage = 13.8
+watt = 62.8
+A = 0.558
+
+threads = 4
+optimizer = 2
+max = 1000
+training = 10
+CPU usage = 15.8
+watt = 63.1
+A = 0.563
+
+threads = 8
+optimizer = 2
+max = 1000
+training = 10
+CPU usage = 17.6
+watt = 63.5
+A = 0.566
+
+
+threads = 1
+optimizer = 2
+max = 1000
+training = 30
+CPU usage = 12.6
+watt = 62
+A = 0.552
+
+threads = 2
+optimizer = 2
+max = 1000
+training = 30
+CPU usage = 14
+watt = 62.3
+A = 0.558
+
+threads = 4
+optimizer = 2
+max = 1000
+training = 30
+CPU usage = 16
+watt = 63.4
+A = 0.565
+
+threads = 8
+optimizer = 2
+max = 1000
+training = 30
+CPU usage = 18.6
+watt = 64
+A = 0.57
+
+
+threads = 1
+optimizer = 2
+max = 1000
+training = 60
+CPU usage = 12.7
+watt = 62.0
+A = 0.551
+
+threads = 2
+optimizer = 2
+max = 1000
+training = 60
+CPU usage = 14.3
+watt = 62.4
+A = 0.557
+
+threads = 4
+optimizer = 2
+max = 1000
+training = 60
+CPU usage = 16.3
+watt = 64.3
+A = 0.568
+
+threads = 8
+optimizer = 2
+max = 1000
+training = 60
+CPU usage = 21.0
+watt = 68.3
+A = 0.579

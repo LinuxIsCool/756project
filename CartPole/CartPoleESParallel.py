@@ -119,19 +119,15 @@ class CartPoleES:
         return
 
     def test_brain(self, brain, bb):
-        print("here test brain")
         local_env = gym.make(self.env)
         observation = local_env.reset()
-        print("here test brain2")
         bb.set_flat_weights(brain)
-        print("here test brain3")
         agent_fitness = 0
         steps = 0
         # An agent gets a single episode to determine its fitness.
         # In CartPole, fitness is equal to number of steps the the
         # pole remains balanced
         for step in range(self.max_steps):
-            print(step)
             steps += 1
             action = bb.produce_action(np.array(list(observation)))
             observation, reward, done, info = local_env.step(action)
@@ -145,7 +141,6 @@ class CartPoleES:
         #  import tensorflow as tf
         #  import keras
         bb = BlackBox()
-        print("hello")
         F = []
         trials = 0
         for brain in population:
